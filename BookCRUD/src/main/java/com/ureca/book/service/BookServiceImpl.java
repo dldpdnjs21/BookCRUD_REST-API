@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,4 +86,18 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.select(isbn);
 	}
 
+	@Override
+	public List<Book> findPage(Map<String, Integer> map) throws SQLException {
+		return bookDAO.selectPage(map);
+	}
+
 }
+
+
+
+
+
+
+
+
+

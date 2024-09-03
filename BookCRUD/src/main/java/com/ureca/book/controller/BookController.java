@@ -1,7 +1,9 @@
 package com.ureca.book.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,6 +55,15 @@ public class BookController {
 	@GetMapping("/findAll")
 	public List<Book> list()throws SQLException{
 		return bookService.findAll();
+	}
+	
+	//도서조회(조건 페이지)-목록에 사용
+	@GetMapping("/findPage")
+	public List<Book> listByPage()throws SQLException{
+		Map<String, Integer> map = new HashMap<>();
+		    map.put("offset", 10);
+		    map.put("len"   , 10);
+		return bookService.findPage(map);
 	}
 
 	//도서조회(한권)-상세조회,수정폼에 사용

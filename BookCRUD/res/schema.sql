@@ -1,13 +1,13 @@
 use ureca;
 
 drop table if exists `book`;
+
 create table `book`(
    `isbn`   varchar(20) primary key,
    `title`  varchar(60) not null,
    `author` varchar(30) not null,
    `price`  int not null,
-   `desc`   varchar(3000) not null,
-   `img`    varchar(300)
+   `desc`   varchar(3000) not null
 );
 
 drop table if exists `member`;

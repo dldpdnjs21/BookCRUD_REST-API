@@ -33,6 +33,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      select isbn,title,author,price,`desc` 
      from book
   </select>
+  
+  <select id="selectPage" resultType="Book"  parameterType="map">
+     select isbn,title,author,price,`desc` 
+     from book
+     limit #{offset}, #{len}
+  </select>
 
 </mapper>
 
