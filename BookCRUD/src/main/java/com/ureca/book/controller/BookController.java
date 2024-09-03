@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,13 +59,22 @@ public class BookController {
 	}
 	
 	//도서조회(조건 페이지)-목록에 사용
-	@GetMapping("/findPage")
-	public List<Book> listByPage()throws SQLException{
+	@GetMapping("/findPage/{offset}/{len}")
+	public List<Book> listByPage(
+			     @PathVariable("offset") int offset,
+			     @PathVariable("len") int len)throws SQLException{
 		Map<String, Integer> map = new HashMap<>();
-		    map.put("offset", 10);
-		    map.put("len"   , 10);
+		    map.put("offset", offset);
+		    map.put("len"   , len);
 		return bookService.findPage(map);
 	}
+//	@GetMapping("/findPage")
+//	public List<Book> listByPage()throws SQLException{
+//		Map<String, Integer> map = new HashMap<>();
+//		map.put("offset", 10);
+//		map.put("len"   , 10);
+//		return bookService.findPage(map);
+//	}
 
 	//도서조회(한권)-상세조회,수정폼에 사용
 	@GetMapping("/find")

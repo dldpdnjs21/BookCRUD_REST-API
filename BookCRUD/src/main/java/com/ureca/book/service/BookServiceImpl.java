@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,8 @@ public class BookServiceImpl implements BookService {
 		   MultipartFile mfile = book.getUpfile();
 		   String fileName = mfile.getOriginalFilename();
 		   
-		   book.setImg(fileName); //DB에 파일명이 저장되고 싶다 null  ==> "react.png"
+		   book.setOriginImg(fileName); //DB에 파일명이 저장되고 싶다 null  ==> "react.png"
+		   book.setSaveimg(UUID.randomUUID().toString()+fileName);
 		   
 		   System.out.println("업로드 파일명:"+ fileName);
 		   byte[] inFile= mfile.getBytes();
@@ -57,7 +59,7 @@ public class BookServiceImpl implements BookService {
 		   System.out.println("서버경로(프로젝트경로):"+ filePath);
 // => 서버경로(프로젝트경로):C:\Users\student\AppData\Local\Temp\tomcat-docbase.8080.12369757972387596250/upload
 //		   File outFile = new File("c:/ureca/"+ fileName);
-		   File outFile = new File(filePath, fileName);
+		   File outFile = new File(filePath, book.getSaveImg());
 		   
 		   FileCopyUtils.copy(inFile, outFile);//서버(특정위치)에 업로드하기
 		   

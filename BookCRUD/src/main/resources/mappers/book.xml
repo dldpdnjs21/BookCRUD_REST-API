@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        전달데이터와 결과값에 따라 파라미터타입과 결과타입은 변경해서 사용해야 해요.
   -->
   <insert id="insert" parameterType="Book">
-     insert into book (isbn,title,author,price,`desc`, img) 
-     values (#{isbn},#{title},#{author},#{price},#{desc}, #{img})
+     insert into book (isbn,title,author,price,`desc`, originImg, saveImg) 
+     values (#{isbn},#{title},#{author},#{price},#{desc}, #{originImg}, #{saveImg})
   </insert>
   
   <update id="update" parameterType="Book">
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   <select id="select" parameterType="string" 
           resultType="Book">
-     select isbn,title,author,price,`desc`, img 
+     select isbn,title,author,price,`desc`, originImg, saveImg 
      from book 
      where isbn=#{isbn}
   </select>
