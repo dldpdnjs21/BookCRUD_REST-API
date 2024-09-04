@@ -14,11 +14,19 @@ public interface BookDAO {
     public int update(Book book)throws SQLException;
     public int delete(String isbn)throws SQLException;
 
-    public List<Book> selectAll()throws SQLException;
+    public List<Book> selectAll(Map<String, String> map)throws SQLException;
     public List<Book> selectPage(Map<String, Integer> map)throws SQLException;
 
     public Book select(String isbn)throws SQLException;
 	public int updateImage(Book book);
     
 }
+
+
+
+
+
+
+
+
 

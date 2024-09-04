@@ -61,8 +61,23 @@ public class BookController {
 	//도서조회(전체)-목록에 사용
 	@GetMapping("/findAll")
 	public List<Book> list()throws SQLException{
-		return bookService.findAll();
+//		return bookService.findAll();
+		return bookService.findAll(new HashMap<>());
 	}
+	
+	@GetMapping("/findSearch")
+//	public List<Book> findSearch("저자","길동")throws SQLException{
+	public List<Book> findSearch(@RequestParam("search")String search,
+			                     @RequestParam("keyword")String keyword)throws SQLException{
+		Map<String, String> map = new HashMap<>();
+		   map.put("search", search);
+		   map.put("keyword", keyword);
+		
+		
+		return bookService.findAll(map);
+	}
+	
+	
 	
 	//도서조회(조건 페이지)-목록에 사용
 	@GetMapping("/findPage/{offset}/{len}")
@@ -90,3 +105,12 @@ public class BookController {
 	}
 
 }
+
+
+
+
+
+
+
+
+

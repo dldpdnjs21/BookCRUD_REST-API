@@ -34,9 +34,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      where isbn=#{isbn}
   </select>
   
-  <select id="selectAll" resultType="Book">
+  <select id="selectAll" resultType="Book" parameterType="map">
      select isbn,title,author,price,`desc` 
      from book
+<!--      <if test="title != null"> where  title like '%#{keyword}%' </if> -->
+
+     <!-- <if test="search == 'title'"> where  title like '%#{keyword}%' </if> -->
+     <!-- where author like'%'gildong'%' -->
+            
+     <if test="search == 'title'"> where  title like concat('%',#{keyword},'%') </if>
+     
+     <if test="search == 'author'"> where  author like concat('%',#{keyword},'%') </if>
   </select>
   
   <select id="selectPage" resultType="Book"  parameterType="map">
@@ -46,3 +54,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

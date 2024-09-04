@@ -85,8 +85,9 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> findAll() throws SQLException {
-		return bookDAO.selectAll();
+	public List<Book> findAll(Map<String, String> map) throws SQLException {
+		System.out.println("서비스findAll>>"+ map);
+		return bookDAO.selectAll(map);
 	}
 
 	@Override
@@ -102,6 +103,11 @@ public class BookServiceImpl implements BookService {
 
 
 }
+
+
+
+
+
 
 
 

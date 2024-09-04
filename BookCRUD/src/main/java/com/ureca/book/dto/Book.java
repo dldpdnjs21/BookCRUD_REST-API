@@ -10,7 +10,6 @@ public class Book {// 도서와 관련된 속성들을 저장하는 객체
 	private String desc;
 	private String originImg;//이미지파일명 또는 원래 경로와 이미지파일명 저장 
 	private String saveImg;//이미지파일명 또는  저장되 경로와 이미지파일명 저장 
-	
 	private MultipartFile upfile;//업로드 파일 저장 객체 
 	//여러파일의 경우 List<MultipartFile> 사용하면 됨
 	

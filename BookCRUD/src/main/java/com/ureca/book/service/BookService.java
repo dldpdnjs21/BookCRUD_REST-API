@@ -11,7 +11,8 @@ public interface BookService {
     public int modify(Book book)throws SQLException;
     public int remove(String isbn)throws SQLException;
 
-    public List<Book> findAll()throws SQLException;
+//    public List<Book> findAll()throws SQLException;
+    public List<Book> findAll(Map<String, String> map)throws SQLException;
     public List<Book> findPage(Map<String, Integer> map)throws SQLException;
     public Book find(String isbn)throws SQLException;
 	public int updataImage(Book book)throws SQLException;
