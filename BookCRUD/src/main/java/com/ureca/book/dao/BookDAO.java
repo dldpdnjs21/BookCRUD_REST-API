@@ -18,14 +18,7 @@ public interface BookDAO {
     public List<Book> selectPage(Map<String, Integer> map)throws SQLException;
 
     public Book select(String isbn)throws SQLException;
+	public int updateImage(Book book);
     
 }
-
-
-
-
-
-
-
-
 

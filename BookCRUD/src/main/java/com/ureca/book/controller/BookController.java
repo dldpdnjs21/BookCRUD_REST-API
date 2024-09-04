@@ -38,6 +38,12 @@ public class BookController {
 		System.out.println("도서추가 요청>>>"+ book);
 		return bookService.regist(book);
 	}
+	
+	//도서추가-DB수정(이미지 수정)
+	@PostMapping("/updateImage")
+	public int updataImage(Book book) throws SQLException {//Content-Type : multipart/form-data
+		return bookService.updataImage(book);
+	}
 
 	//도서수정-DB수정
 	@PutMapping("/modify")
@@ -84,12 +90,3 @@ public class BookController {
 	}
 
 }
-
-
-
-
-
-
-
-
-

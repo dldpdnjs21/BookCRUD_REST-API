@@ -35,6 +35,12 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.insert(book); //img==> null  ==> "react.png"
 	}
 	
+	@Override
+	public int updataImage(Book book) throws SQLException {//도서이미지 변경
+		uploadFile(book);//새로운 이미지 추가
+		return bookDAO.updateImage(book);
+	}
+	
 	private void uploadFile(Book book) { //MultipartFile mfile){//파일업로드 처리
 	   
 	   try {
@@ -93,12 +99,9 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.selectPage(map);
 	}
 
+
+
 }
-
-
-
-
-
 
 
 

@@ -18,6 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      where isbn=#{isbn}
   </update>
   
+  <update id="updateImage" parameterType="Book">
+     update book set originImg=#{originImg}, saveImg=#{saveImg}
+     where isbn=#{isbn}
+  </update>
+  
   <delete id="delete" parameterType="string">
      delete from book where isbn=#{isbn}
   </delete>
@@ -41,14 +46,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
 
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
